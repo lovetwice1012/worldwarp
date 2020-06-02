@@ -7,6 +7,7 @@ use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\PlayerJoinEvent;
 use pocketmine\command\ConsoleCommandSender;
+use pocketmine\command\CommandSender;
 use czechpmdevs\multiworld\api\WorldGameRulesAPI;
 use czechpmdevs\multiworld\api\WorldManagementAPI;
 use lovetwice1012\worldwarp\CustomForm;
@@ -35,7 +36,7 @@ class Main extends PluginBase implements Listener
     }  
     public static function handleCustomFormResponse(Player $player, $data, CustomForm $form) {
         if($data === null) return;
-                Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), "mw tp " . WorldManagementAPI::getAllLevels()[$data[1]]);               
+                Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), "mw tp " . WorldManagementAPI::getAllLevels()[$data[1]]." ".$player->getName());               
     }
     
 }
