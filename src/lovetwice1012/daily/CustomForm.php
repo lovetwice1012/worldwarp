@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace lovetwice1012\worldwarp;
 
-use czechpmdevs\multiworld\MultiWorld;
+use lovetwice1012\worldwarp\Main;
 use pocketmine\form\Form;
 use pocketmine\Player;
 
@@ -71,7 +71,7 @@ class CustomForm implements Form {
      * @param mixed $data
      */
     public function handleResponse(Player $player, $data): void {
-        MultiWorld::getInstance()->Main->handleCustomFormResponse($player, $data, $this);
+       Main::handleCustomFormResponse($player, $data, $this);
     }
 
     public function jsonSerialize(): array {
