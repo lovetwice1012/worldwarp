@@ -35,7 +35,7 @@ class Main extends PluginBase implements Listener
     }  
     public static function handleCustomFormResponse(Player $player, $data, CustomForm $form) {
         if($data === null) return;
-                $this->plugin->getServer()->dispatchCommand(new ConsoleCommandSender(), "mw tp " . WorldManagementAPI::getAllLevels()[$data[1]]);               
+                Server::getServer()->dispatchCommand(new ConsoleCommandSender(), "mw tp " . WorldManagementAPI::getAllLevels()[$data[1]]);               
     }
     
 }
