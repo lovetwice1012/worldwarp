@@ -2,6 +2,7 @@
 
 namespace lovetwice1012\worldwarp;
 
+use pocketmine\command\Command;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\PlayerJoinEvent;
@@ -21,14 +22,12 @@ class Main extends PluginBase implements Listener
     public $plugin;
     public $Main;
     public function onEnable()
-    {
-	
+    {	
         $this->getServer()->getPluginManager()->registerEvents($this, $this);      
     }
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
 	{
         $customForm = new CustomForm("World Manager");
-        $customForm->mwId = $data;
         $customForm->addLabel("Teleport to level");
         $customForm->addDropdown("Level", WorldManagementAPI::getAllLevels());
         $sebder->getPlayer()->sendForm($customForm); 
