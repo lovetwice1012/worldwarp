@@ -25,12 +25,13 @@ class Main extends PluginBase implements Listener
     {	
         $this->getServer()->getPluginManager()->registerEvents($this, $this);      
     }
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args):bool
 	{
         $customForm = new CustomForm("World Manager");
         $customForm->addLabel("Teleport to level");
         $customForm->addDropdown("Level", WorldManagementAPI::getAllLevels());
         $sender->getPlayer()->sendForm($customForm); 
+    return true;
     }  
     public function handleCustomFormResponse(Player $player, $data, CustomForm $form) {
         if($data === null) return;
