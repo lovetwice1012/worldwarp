@@ -5,6 +5,7 @@ namespace lovetwice1012\daily;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\PlayerJoinEvent;
+use pocketmine\command\CommandSender;
 use czechpmdevs\multiworld\api\WorldGameRulesAPI;
 use czechpmdevs\multiworld\api\WorldManagementAPI;
 use czechpmdevs\multiworld\form\CustomForm;
@@ -27,14 +28,12 @@ class Main extends PluginBase implements Listener
         
         
     }
-    
-    
-            
-            
-            
-            
-         
-
-        
-    
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
+	{
+        $customForm = new CustomForm("World Manager");
+        $customForm->mwId = $data;
+        $customForm->addLabel("Teleport to level");
+        $customForm->addDropdown("Level", WorldManagementAPI::getAllLevels());
+        $player->sendForm($customForm); 
+    }  
 }
