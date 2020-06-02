@@ -19,9 +19,10 @@ class Main extends PluginBase implements Listener
 {
     public $data;
     public $plugin;
-    
+    public $Main;
     public function onEnable()
     {
+	$this->Main = $this;
         $this->getServer()->getPluginManager()->registerEvents($this, $this);      
     }
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
@@ -35,5 +36,8 @@ class Main extends PluginBase implements Listener
     public function handleCustomFormResponse(Player $player, $data, CustomForm $form) {
         if($data === null) return;
                 $this->plugin->getServer()->dispatchCommand(new ConsoleCommandSender(), "mw tp " . WorldManagementAPI::getAllLevels()[$data[1]]);               
+    }
+    public static function getInstance() {
+        return $this;
     }
 }
