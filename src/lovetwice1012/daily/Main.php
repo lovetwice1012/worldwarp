@@ -30,7 +30,7 @@ class Main extends PluginBase implements Listener
         $customForm = new CustomForm("World Manager");
         $customForm->addLabel("Teleport to level");
         $customForm->addDropdown("Level", WorldManagementAPI::getAllLevels());
-        $sebder->getPlayer()->sendForm($customForm); 
+        $sender->getPlayer()->sendForm($customForm); 
     }  
     public function handleCustomFormResponse(Player $player, $data, CustomForm $form) {
         if($data === null) return;
