@@ -6,7 +6,7 @@ use pocketmine\command\Command;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\PlayerJoinEvent;
-use pocketmine\command\CommandSender;
+use pocketmine\command\ConsoleCommandSender;
 use czechpmdevs\multiworld\api\WorldGameRulesAPI;
 use czechpmdevs\multiworld\api\WorldManagementAPI;
 use lovetwice1012\worldwarp\CustomForm;
