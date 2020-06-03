@@ -6,5 +6,5 @@ auther: lovetwice1012
 
 commands:
   wwarp:
-    description: Select a destination in the world in the form to teleport.
+    description: Select the destination world in the form and teleport it.
     usage: /wwarp
