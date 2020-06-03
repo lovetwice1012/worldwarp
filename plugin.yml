@@ -6,5 +6,5 @@ auther: lovetwice1012
 
 commands:
   wwarp:
-    description: 好きなワールドにワープします。
+    description: Select a destination in the world in the form to teleport.
     usage: /wwarp
