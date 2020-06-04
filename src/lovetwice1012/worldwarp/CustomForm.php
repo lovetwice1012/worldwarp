@@ -50,7 +50,7 @@ class CustomForm implements Form {
      * @param string $text
      * @param string|null $default
      */
-    public function addToggle(string $text, ?bool $default = null) {
+    public function addToggle(string $text, bool $default = null) {
         if($default!== null) {
             $this->data["content"][] = ["type" => "toggle", "text" => $text, "default" => $default];
             return;
