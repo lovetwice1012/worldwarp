@@ -8,10 +8,7 @@ use lovetwice1012\worldwarp\Main;
 use pocketmine\form\Form;
 use pocketmine\Player;
 
-/**
- * Class CustomForm
- * @package czechpmdevs\multiworld\form
- */
+
 class CustomForm implements Form {
 
     public const FORM_CREATE = 1;
