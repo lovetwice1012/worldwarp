@@ -6,10 +6,6 @@ namespace lovetwice1012\worldwarp;
 
 use pocketmine\Server;
 
-/**
- * Class WorldManagementAPI
- * @package czechpmdevs\multiworld\api
- */
 class WMAPI {
     public static function getAllLevels(): array {
         $levels = [];
