@@ -8,7 +8,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\PlayerJoinEvent;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\command\CommandSender;
-use lovetwice1012\worldwarp\WGLAPI;
 use lovetwice1012\worldwarp\WMAPI;
 use lovetwice1012\worldwarp\CustomForm;
 use pocketmine\form\Form;
@@ -29,13 +28,13 @@ class Main extends PluginBase implements Listener
 	{
         $customForm = new CustomForm("World Manager");
         $customForm->addLabel("Teleport to level");
-        $customForm->addDropdown("Level", WorldManagementAPI::getAllLevels());
+        $customForm->addDropdown("Level", WMAPI::getAllLevels());
         $sender->getPlayer()->sendForm($customForm); 
     return true;
     }  
     public static function handleCustomFormResponse(Player $player, $data, CustomForm $form) {
         if($data === null) return;
-                Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), 'mw tp "' . WorldManagementAPI::getAllLevels()[$data[1]].'" '.$player->getName());               
+                Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), 'mw tp "' . WMAPI::getAllLevels()[$data[1]].'" '.$player->getName());               
     }
     
 }
