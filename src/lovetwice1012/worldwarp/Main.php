@@ -28,7 +28,7 @@ class Main extends PluginBase implements Listener
 	{
 	if(!$sender instanceof Player) {
                 $sender->sendMessage("ワールド内から実行してください。");
-                return;
+                return true;
         }
         $customForm = new CustomForm("world warp");
         $customForm->addLabel("[ワールド間転送]行きたいワールドを選択してください。");
