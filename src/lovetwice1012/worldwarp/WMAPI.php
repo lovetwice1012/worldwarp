@@ -10,8 +10,12 @@ class WMAPI {
     public static function getAllLevels(): array {
         $levels = [];
         foreach (glob(Server::getInstance()->getDataPath() . "/worlds/*") as $world) {
-            if(count(scandir($world)) >= 4) { // don't forget to .. & .
-                $levels[] = basename($world);
+            try {
+                if(count(scandir($world)) >= 4) { 
+                    $levels[] = basename($world);
+                }
+            } catch ( Exception $ex ) {
+            
             }
         }
         return $levels;
