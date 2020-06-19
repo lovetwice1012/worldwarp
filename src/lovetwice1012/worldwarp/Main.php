@@ -26,15 +26,38 @@ class Main extends PluginBase implements Listener
     }
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args):bool
 	{
-        $customForm = new CustomForm("World Manager");
-        $customForm->addLabel("Teleport to level");
+	if(!$sender instanceof Player) {
+                $sender->sendMessage("ワールド内から実行してください。");
+                return;
+        }
+        $customForm = new CustomForm("world warp");
+        $customForm->addLabel("[ワールド間転送]行きたいワールドを選択してください。");
         $customForm->addDropdown("Level", WMAPI::getAllLevels());
         $sender->getServer()->getPlayer($sender->getName())->sendForm($customForm); 
-    return true;
+        return true;
     }  
     public static function handleCustomFormResponse(Player $player, $data, CustomForm $form) {
-        if($data === null) return;
-                Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), 'mw tp "' . WMAPI::getAllLevels()[$data[1]].'" '.$player->getName());               
+        if($data === null){
+            return;
+	}
+	
+	$levelsname = WMAPI::getAllLevels()[$data[1]];
+	if(!$this->getServer()->isLevelGenerated($levelsname)) {
+            $sender->sendMessage("このワールドは存在しません！"));
+            return;
+        }
+
+        if(!$this->getServer()->isLevelLoaded($levelsname)) {
+            $this->getServer()->loadLevel($levelsname);
+        }
+
+        $level = $this->getServer()->getLevelByName($levelsname);
+
+        $sender->teleport($level->getSafeSpawn());
+        $sender->sendMessage($levelsname."に転送しました。");
+        return;
     }
-    
+    private function getServer(): Server {
+        return Server::getInstance();
+    }
 }
