@@ -43,7 +43,7 @@ class Main extends PluginBase implements Listener
 	
 	$levelsname = WMAPI::getAllLevels()[$data[1]];
 	if(!$this->getServer()->isLevelGenerated($levelsname)) {
-            $sender->sendMessage("このワールドは存在しません！"));
+            $player->sendMessage("このワールドは存在しません！");
             return;
         }
 
@@ -53,8 +53,8 @@ class Main extends PluginBase implements Listener
 
         $level = $this->getServer()->getLevelByName($levelsname);
 
-        $sender->teleport($level->getSafeSpawn());
-        $sender->sendMessage($levelsname."に転送しました。");
+        $player->teleport($level->getSafeSpawn());
+        $player->sendMessage($levelsname."に転送しました。");
         return;
     }
     private function getServer(): Server {
