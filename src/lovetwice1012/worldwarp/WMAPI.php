@@ -14,7 +14,7 @@ class WMAPI {
                 if(count(scandir($world)) >= 4) { 
                     $levels[] = basename($world);
                 }
-            } catch ( Exception $ex ) {
+            } catch ( \Exception $ex ) {
             
             }
         }
