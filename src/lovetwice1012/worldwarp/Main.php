@@ -58,6 +58,8 @@ class Main extends PluginBase implements Listener
         return;
     }
     private function getServer(): Server {
-        return Server::getInstance();
+      
+	    return Server::getInstance();
+    
     }
 }
