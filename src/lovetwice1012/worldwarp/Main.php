@@ -42,24 +42,19 @@ class Main extends PluginBase implements Listener
 	}
 	
 	$levelsname = WMAPI::getAllLevels()[$data[1]];
-	if(!$this->getServer()->isLevelGenerated($levelsname)) {
+	if(!Server::getInstance()->isLevelGenerated($levelsname)) {
             $player->sendMessage("このワールドは存在しません！");
             return;
         }
 
-        if(!$this->getServer()->isLevelLoaded($levelsname)) {
-            $this->getServer()->loadLevel($levelsname);
+        if(!Server::getInstance()->isLevelLoaded($levelsname)) {
+            Server::getInstance()->loadLevel($levelsname);
         }
 
-        $level = $this->getServer()->getLevelByName($levelsname);
+        $level = Server::getInstance()->getLevelByName($levelsname);
 
         $player->teleport($level->getSafeSpawn());
         $player->sendMessage($levelsname."に転送しました。");
         return;
-    }
-    private function getServer(): Server {
-      
-	    return Server::getInstance();
-    
     }
 }
